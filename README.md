@@ -18,6 +18,7 @@ Process of Compilation and Execution:
 
 Project Structure:
 RTRRIP_Cache_Replacement
+```bash    
 |_ README.md
 |_ benchmarks.zip
 |_ zsim
@@ -38,7 +39,7 @@ RTRRIP_Cache_Replacement
        |_ rtrrip_repl.h
        |_ init.cpp
     |_ tests
-
+```
 # Project Reference Paper
 https://ieeexplore.ieee.org/document/9824298
 
