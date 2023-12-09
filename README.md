@@ -47,5 +47,5 @@ RTRRIP_Cache_Replacement
 https://ieeexplore.ieee.org/document/9824298
 
 #Acknowledgement
-Dr.EJ KIM - Professor, CSE Department, Texas A & M University
-Sabuj Laskar - Teaching Assistant, CSCE-614 
+<br/>Dr.EJ KIM - Professor, CSE Department, Texas A & M University
+<br/>Sabuj Laskar - Teaching Assistant, CSCE-614 
