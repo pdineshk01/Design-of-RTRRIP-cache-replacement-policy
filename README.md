@@ -8,6 +8,7 @@ In RTRRIP replacement policy, the accuracy of the RRIP predictor is enhanced by 
 Simulator Used: zsim (version 2)
 Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
 Process of Compilation and Execution:
+```bash
 •	git apply cse_server.patch
 •	zip -F benchmarks.zip --out single-benchmark.zip && unzip single-benchmark.zip && mkdir benchmarks/parsec-2.1/inputs/streamcluster tar -zxvf polybench-c-3.2.tar.gz
 •	source setup_env
@@ -15,7 +16,7 @@ Process of Compilation and Execution:
 •	scons -j4
 •	./rtrrip_script  <Benchmark> <Replacement policy> , where Benchmark:[SPEC,RTRRIP] and Replacement policy:[LRU,LFU,SRRIP,RTRRIP]
 •	Once the script has successfully run, the output can be viewed at zsim/outputs/<Replacement_policy>/<Benchmark_workload>/zsim.out
-
+```
 Project Structure:
 RTRRIP_Cache_Replacement
 ```bash    
