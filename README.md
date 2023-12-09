@@ -5,8 +5,10 @@ Cache replacement techniques help in achieving this by optimizing cache utilizat
 In RTRRIP replacement policy, the accuracy of the RRIP predictor is enhanced by initially subjecting cache blocks to a pre-filter. This pre-filter creates a subset based on a threshold value (where average recency time is considered). Subsequently, this subset is forwarded to the RRIP predictor, which determines the eviction of a data block based on Re-reference Prediction Values (RRPV).
 
 # Simulator Setup,Compiling and Configuration
+```bash
 Simulator Used: zsim (version 2)
 Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
+```
 Process of Compilation and Execution:
 ```bash
 •	git apply cse_server.patch
