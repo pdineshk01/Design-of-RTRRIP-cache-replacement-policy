@@ -16,8 +16,8 @@ Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
 •	source setup_env
 •	cd zsim
 •	scons -j4
-•	./rtrriprunscript  <Benchmark> <Replacement policy> , where Benchmark:[SPEC,RTRRIP] and Replacement policy:[LRU,LFU,SRRIP,RTRRIP]
-•	Once the script has successfully run, the output can be viewed at zsim/outputs/<Replacement_policy>/<Benchmark_workload>/zsim.out
+•	./rtrriprunscript  <Benchmark> <Replacement policy> , where Benchmark:[SPEC,PARSEC] and Replacement policy:[LRU,LFU,SRRIP,RTRRIP]
+•	Once the script has successfully run, the output can be viewed at zsim/outputs/hw4/<Replacement_policy>/<Benchmark_workload>/zsim.out
 ```
 # Project Structure:
 # RTRRIP_Cache_Replacement
@@ -35,13 +35,10 @@ Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
        |_ RTRRIP_assoc2
        |_ RTRRIP_assoc4
     |_ misc 
+    |_ rtrriprunscript
     |_ outputs
-       |_ benchmark
-       	  |_ LRU
-       	  |_ LFU
-       	  |_ SRRIP
-          |_ RTRRIP
-          |_ RTRRIP_assoc
+       |_ hw4
+       	  |_ RTRRIP_assoc
           |_ RTRRIP_assoc2
           |_ RTRRIP_assoc4
     |_ src
@@ -50,6 +47,7 @@ Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
     |_ tests
 ```
 # Project Reference Paper
+"Improved Cache Replacement Policy based on Recency Time Re-Reference Interval Prediction"
 https://ieeexplore.ieee.org/document/9824298
 
 # Acknowledgement
