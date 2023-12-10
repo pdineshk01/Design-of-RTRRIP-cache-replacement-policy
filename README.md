@@ -9,6 +9,10 @@ In RTRRIP replacement policy, the accuracy of the RRIP predictor is enhanced by 
 Simulator Used: zsim (version 2)
 Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
 ```
+
+Note: before running the rtrriprunscript, ensure that the replication policy name is one among the following:RTRRIP, RTRRIP_assoc, RTRRIP_assoc2, RTRRIP_assoc4. This is modified based on the type of set associativity.
+For example, to execute RTRRIP for a 4 way set associativity set the repl type as RTRRIP_assoc4.
+
 # Process of Compilation and Execution:
 ```bash
 •	git apply cse_server.patch
