@@ -1,0 +1,4 @@
+RTRRIP          // output files for 16 way set associative cache
+RTRRIP_assoc    // output files for 8 way set associative cache
+RTRRIP_assoc2   // output files for 2 way set associative cache
+RTRRIP_assoc4   // output files for 4 way set associative cache
