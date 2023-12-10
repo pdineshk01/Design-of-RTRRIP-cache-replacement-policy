@@ -16,7 +16,7 @@ Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
 •	source setup_env
 •	cd zsim
 •	scons -j4
-•	./rtrrip_script  <Benchmark> <Replacement policy> , where Benchmark:[SPEC,RTRRIP] and Replacement policy:[LRU,LFU,SRRIP,RTRRIP]
+•	./rtrriprunscript  <Benchmark> <Replacement policy> , where Benchmark:[SPEC,RTRRIP] and Replacement policy:[LRU,LFU,SRRIP,RTRRIP]
 •	Once the script has successfully run, the output can be viewed at zsim/outputs/<Replacement_policy>/<Benchmark_workload>/zsim.out
 ```
 # Project Structure:
@@ -31,13 +31,19 @@ Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
        |_ LFU
        |_ SRRIP
        |_ RTRRIP
+       |_ RTRRIP_assoc
+       |_ RTRRIP_assoc2
+       |_ RTRRIP_assoc4
     |_ misc 
     |_ outputs
        |_ benchmark
        	  |_ LRU
        	  |_ LFU
        	  |_ SRRIP
-           |_ RTRRIP
+          |_ RTRRIP
+          |_ RTRRIP_assoc
+          |_ RTRRIP_assoc2
+          |_ RTRRIP_assoc4
     |_ src
        |_ rtrrip_repl.h
        |_ init.cpp
