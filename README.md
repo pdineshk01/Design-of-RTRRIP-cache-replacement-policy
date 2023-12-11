@@ -10,8 +10,10 @@ Simulator Used: zsim (version 2)
 Zsim Dependencies: gcc >= 4.6, pin, scons, libconfig, libhdf5, libelfg0
 ```
 
-Note: before running the rtrriprunscript, ensure that the replication policy name is one among the following:RTRRIP, RTRRIP_assoc, RTRRIP_assoc2, RTRRIP_assoc4. This is modified based on the type of set associativity.
-For example, to execute RTRRIP for a 4 way set associativity set the repl type as RTRRIP_assoc4.
+# Note: 
+• before running the rtrriprunscript, ensure that the replication policy name is one among the following:RTRRIP, RTRRIP_assoc, RTRRIP_assoc2, RTRRIP_assoc4. This is   modified based on the type of set associativity.
+  <br/>For example, to execute RTRRIP for a 4 way set associativity set the repl type as RTRRIP_assoc4.<br/>
+• All Output files are not included due to size constraints.
 
 # Process of Compilation and Execution:
 ```bash
