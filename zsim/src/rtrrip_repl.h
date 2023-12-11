@@ -18,11 +18,8 @@ class RTRRIPReplPolicynew : public ReplPolicy {
 
 
 	uint32_t* rtvalarray;	// array for storing block recency time values
-	//vector <uint32_t> rtvalarray;
 	
 	int* RTarray;	// array for storing subset of cache blocks from RT filter
-	//vector <uint32_t> RTarray;
-//	vector <uint32_t> index;
 	
 	float rt_threshold=0;
 	uint32_t sum=0;
@@ -64,12 +61,11 @@ class RTRRIPReplPolicynew : public ReplPolicy {
 
         }
 
-	 template <typename C> inline void rtfilter(const MemReq* req, C cands)
+	 template <typename C> inline void rtfilter(const MemReq* req, C cands)		// calculating the threshold value and creating a subset of blocks
 	{       rt_threshold=0;
 		sum=0;
 
 
-		//info("calling from rtfilter");
 		 for(auto ci = cands.begin(); ci != cands.end(); ci.inc())
 		{
 			sum = sum+rtvalarray[*ci];
@@ -82,11 +78,11 @@ class RTRRIPReplPolicynew : public ReplPolicy {
 		{	//info("iter = %d",iter);
 			if(rtvalarray[*ci] >= rt_threshold)
 				{	
-				RTarray[*ci] = valarray[*ci];	
+				RTarray[*ci] = valarray[*ci];			        //  Assigning the RRPV value for blocks that have RT value greater than or equal to threshold 
 				}
 			else
 				{
-				RTarray[*ci] = -1;
+				RTarray[*ci] = -1;					// Set RRPV value as -1 if the data block is not a part of the subset 
 				}
 			
 		}
@@ -97,27 +93,24 @@ class RTRRIPReplPolicynew : public ReplPolicy {
 
         void update(uint32_t id, const MemReq* req) {
 	
-	//info("id in update = %d",id);
  
 	if(miss)
 	{
-	valarray[id]  = rrpvmax-1;		// set RRPV value as 2^M - 2, which is 2 in our case
-	//info("calling from update miss");
+	valarray[id]  = rrpvmax-1;		// set RRPV value as 2^M - 2 for incoming new block, which is 2 in our case
 	for(uint32_t i=0;i<numLines;i++)
 	{
 			rtvalarray[i]++;
 	}
-		rtvalarray[id] = 0;
+		rtvalarray[id] = 0;		// set recency time value as 0 for the new block
 
 	}
 	else
-	{valarray[id] = 0;
-	//  info("calling from update hit");
+	{valarray[id] = 0;			// set RRPV value as 0 for the block which has a hit
 	for(uint32_t i=0;i<numLines;i++)
 	{
-			rtvalarray[i]++;
+			rtvalarray[i]++;	// increment the recency time value of all blocks 
 	}
-	rtvalarray[id] = 0;
+	rtvalarray[id] = 0;			
 
 	
 	}
@@ -129,41 +122,27 @@ class RTRRIPReplPolicynew : public ReplPolicy {
        
 
 	 void replaced(uint32_t id) {
-            miss = true;
-//		info("calling from replaced");
-			// set as true if a miss occured
+            miss = true;			// set miss as true indicating its a miss scenario
         }
 
 
 
 
-        template <typename C> inline uint32_t rank(const MemReq* req, C cands) {
+        template <typename C> inline uint32_t rank(const MemReq* req, C cands) {		// rank function for choosing the candidate for eviction
             uint32_t bestCands = -1;
  	
 
 
 	
-	rtfilter(req, cands);
-	
-	//for (auto ci = cands.begin(); ci != cands.end(); ci.inc()) {
-              
-	// 	info("RT array = %d", RTarray[*ci]);
-	
-//	}
-//	info("next iter");
-
-
-				
-//	info("outside RTfilter inside rank");
-	//info("RT size = %d", uint32_t(RTarray.size()));
+	rtfilter(req, cands);	// calling RTfiler for getting the subset of blocks
 
           while(true) 
 	{   
-			//info("inside rank while loop");
+			
 		
             for (auto ci = cands.begin(); ci != cands.end(); ci.inc()) {
                 bestCands = *ci;
-		if((valarray[bestCands] == rrpvmax) &&(RTarray[bestCands]!=-1))
+		if((valarray[bestCands] == rrpvmax) &&(RTarray[bestCands]!=-1))		// choosing the candidate based on RRPV value from the subset
 		{
 					
 				return bestCands;
@@ -177,7 +156,7 @@ class RTRRIPReplPolicynew : public ReplPolicy {
 		
 		
 		if(RTarray[*ci]!= -1) 	
-		{	RTarray[*ci]++;
+		{	RTarray[*ci]++;							// if no candidate is found, increment the RRPV value of each subset block 
 		
 			valarray[*ci]++;	
 		}
